@@ -1,45 +1,54 @@
-$(document).ready(function() {
-    $('#calendar').fullCalendar();
-});
 document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-  
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    let calendarEl = document.getElementById('calendar');
+    let modal = document.getElementById("eventModal");
+    let eventTitleInput = document.getElementById("eventTitle");
+    let eventDateInput = document.getElementById("eventDate");
+
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
       headerToolbar: {
-        start: 'dayGridMonth,timeGridWeek,timeGridDay custom1',
+        left: 'prev,next today',
         center: 'title',
-        end: 'custom2 prevYear,prev,next,nextYear'
-      },
-      footerToolbar: {
-        start: 'custom1,custom2',
-        center: '',
-        end: 'prev,next'
-      },
-      customButtons: {
-        custom1: {
-          text: 'custom 1',
-          click: function() {
-            alert('clicked custom button 1!');
-          }
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        custom2: {
-          text: 'custom 2',
-          click: function() {
-            alert('clicked custom button 2!');
-          }
+        events: [], // Initial empty event array
+
+        dateClick: function(info) {                
+            eventDateInput.value = info.dateStr; // Store the date of the clicked day
+            modal.style.display = "block"; // Show the modal
         }
-      }
     });
-  
+    document.getElementById("eventForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // Prevent default form submission
+        var title = eventTitleInput.value; // Get the event title
+        var date = eventDateInput.value; // Get the clicked date
+
+        // Add new event to the calendar
+        calendar.addEvent({
+            title: title,
+            start: date,
+            allDay: true, // Set as an all-day event
+            id: Date.now().toString() // Generate a unique ID
+        });
+
+        modal.style.display = "none"; // Hide the modal after creation
+        eventTitleInput.value = ''; // Clear the input field
+    });
+
+    // Close modal on clicking the close button
+    document.getElementById("closeModal").addEventListener("click", function() {
+        modal.style.display = "none"; // Hide the modal
+    });
     calendar.render();
-  });
+});
+
 
 function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("container").style.marginLeft = "250px";
+    document.getElementById("calendar").style.marginLeft = "250px";
 }
   
 function closeNav() {
     document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("container").style.marginLeft= "0";
+    document.getElementById("calendar").style.marginLeft= "250px";
 }
