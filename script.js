@@ -12,10 +12,34 @@ document.addEventListener('DOMContentLoaded', function() {
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         events: [], // Initial empty event array
+        eventContent: function(arg) {
+            let deleteButton = document.createElement('span');
+            deleteButton.innerHTML = "X"; // "X" button
+            deleteButton.classList.add("fc-event-delete");
 
+            // Prevent the FullCalendar eventClick from firing when "X" is clicked
+            deleteButton.onclick = function(e) {
+                e.stopPropagation(); // Prevents eventClick from firing
+                if (confirm('Are you sure you want to delete this event?')) {
+                    arg.event.remove(); // Remove the event on clicking "X"
+                }
+            };
+
+            let titleElement = document.createElement('span');
+            titleElement.innerHTML = arg.event.title;
+
+            let arrayOfDomNodes = [titleElement, deleteButton];
+            return { domNodes: arrayOfDomNodes };
+        },
         dateClick: function(info) {                
             eventDateInput.value = info.dateStr; // Store the date of the clicked day
             modal.style.display = "block"; // Show the modal
+        },
+        eventClick: function(info) {
+            // Prompt for deletion confirmation
+            if (confirm('Are you sure you want to delete this event?')) {
+                info.event.remove(); // Remove the event from the calendar
+            }
         }
     });
     document.getElementById("eventForm").addEventListener("submit", function(e) {
