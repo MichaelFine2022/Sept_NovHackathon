@@ -1,32 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Student Calendar</title>
-</head>
-<body>
-    <span id="sideMenu"></span>
-    <div class="calendar">
-        <header>
-            <button id="prevMonth">&lt;</button>
+<html>  
+<head>  
+    <title>Fullcalendar</title> 
 
-            <h1 id="monthYear"></h1>
-            
-            <button id="nextMonth">&gt;</button>
-        </header>
-        <div class="days">
-            <span class="day" id="day0">Sun</span>
-            <span class="day" id="day1">Mon</span>
-            <span class="day" id="day2">Tue</span>
-            <span class="day" id="day3">Wed</span>
-            <span class="day" id="day4">Thu</span>
-            <span class="day" id="day5">Fri</span>
-            <span class="day" id="day6">Sat</span>
-        </div>
-        <div id="dates" class="dates"></div>
-    </div>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script> 
+
     <script src="script.js"></script>
-</body>
+</head>
+    <body>
+        <h2>Javascript Fullcalendar</h2>
+        <div class="container">
+        <div id="calendar"></div>
+        </div>
+        <br>
+    </body>
 </html>

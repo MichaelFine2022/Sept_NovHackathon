@@ -1,88 +1,69 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-}
-
-#prevMonth, #nextMonth {
-    border-radius: 25%;
-    padding: 5px;
-    background-color: #e0e0e0;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 50px;
-    height: auto;
-}
-
-#prevMonth:active, #nextMonth:active {
-    box-shadow: inset 2px 2px 10px rgb(39, 38, 38);
-}
-
-#prevMonth:hover, #nextMonth:hover {
-    background-color: #c0c0c0;
-}
-
-.calendar {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    max-width: 100%;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    font-weight: bold;
-}
-
-.day {
-    font-weight: bold;
-    padding: auto;
-    width: auto;
-}
-
-#monthYear {
-    flex: 1;
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.dates {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1px;
-    background-color: #f0f0f0;
-    width: auto;
-    height: auto;
-}
-
-.date {
+/* Ensure the calendar fills its container */
+#calendar {
+    max-width: 900px;  /* You can adjust this width based on your layout */
+    margin: 0 auto;    /* Centers the calendar on the page */
     padding: 20px;
-    background-color: white;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background-color: #f9f9f9;  /* Light background for the calendar */
+    border: 1px solid #ddd;      /* Border around the calendar */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for a modern look */
+    height: 900px;
+    width: 900px;
+}
+h2{
+    text-align: center;
+    justify-content: center;
+}
+/* Calendar header (customize if needed) */
+.fc-toolbar {
+    margin-bottom: 20px;
 }
 
-.date:hover {
-    background-color: #f9f9f9;
+/* Style buttons in FullCalendar */
+.fc-button {
+    background-color: #007bff;  /* Blue button background */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.fc-button:hover {
+    background-color: #0056b3;  /* Darker blue on hover */
+}
+
+/* Customize the appearance of day grid cells */
+.fc-daygrid-day {
+    background-color: white; /* Ensure a clean white background */
+    border: 1px solid #ddd;  /* Add light borders between day cells */
+}
+
+.fc-day-today {
+    background-color: #f0f8ff; /* Highlight today's date with a light color */
+}
+
+/* Customize event appearance */
+.fc-event {
+    background-color: #28a745; /* Green background for events */
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.fc-event:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    #calendar {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .fc-toolbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
