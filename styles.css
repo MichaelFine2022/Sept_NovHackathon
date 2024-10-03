@@ -14,10 +14,23 @@ h2{
     text-align: center;
     justify-content: center;
 }
+#miniCalendar {
+    max-width: 300px; /* Adjust size as needed */
+    margin: 0 auto;
+}
+  
+.fc-daygrid-day {
+    padding: 5px; /* Adjust padding */
+    font-size: 12px; /* Adjust font size */
+}
+  
 .fc-event-delete {
     color: red;
     cursor: pointer;
     margin-left: 5px;
+}
+.fc-event-delete:hover {
+    background-color: #302f2f;
 }
 #eventModal {
     display: none; 
@@ -135,6 +148,7 @@ h2{
     color: white;
     padding: 10px 15px;
     border: none;
+    height: 50px;
 }
   
   .openbtn:hover {

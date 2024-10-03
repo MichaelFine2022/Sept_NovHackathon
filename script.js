@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        right: 'timeGridDay,timeGridWeek,dayGridMonth'
         },
         events: [], // Initial empty event array
         eventContent: function(arg) {
@@ -66,13 +66,20 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
 });
 
-
 function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
     document.getElementById("calendar").style.marginLeft = "250px";
 }
-  
 function closeNav() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("calendar").style.marginLeft= "250px";
 }
+/*
+function addEvent(){
+    calendar.events.add({
+            title: title,
+            start: new Date(),
+            allDay: true, // Set as an all-day event
+            })
+        }
+            */
